@@ -4,206 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rituals of Taste | Premium Tea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #0a0a0a;
-            --gold: #c5a059;
-            --white: #f5f5f5;
-            --gray: #888;
-        }
-
+        :root { --bg: #0a0a0a; --gold: #c5a059; --white: #f5f5f5; --gray: #888; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Hero Section */
+        /* Анимированный фон для Hero */
         .hero {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
+            position: relative;
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
-            padding: 20px;
+            overflow: hidden;
         }
 
-        .hero-content {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.5s ease forwards;
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+            animation: rotate 60s linear infinite;
         }
 
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .gold-subtitle {
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            font-size: 0.75rem;
-            margin-bottom: 20px;
-            display: block;
-        }
+        .hero-content { z-index: 1; opacity: 0; transform: translateY(30px); animation: fadeInUp 1.5s ease forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 30px;
-        }
-
-        .line {
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            margin: 0 auto 30px;
-            animation: growLine 2s ease forwards 1s;
-        }
-
+        .gold-subtitle { color: var(--gold); text-transform: uppercase; letter-spacing: 6px; font-size: 0.75rem; margin-bottom: 20px; display: block; }
+        .main-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 400; line-height: 1.1; margin-bottom: 30px; }
+        .line { width: 0; height: 1px; background: var(--gold); margin: 0 auto 30px; animation: growLine 2s ease forwards 1s; }
         @keyframes growLine { to { width: 140px; } }
-
-        #typewriter { 
-            color: var(--gold); 
-            border-right: 2px solid var(--gold);
-            padding-right: 5px;
-            animation: blink 0.7s infinite;
-        }
-
+        #typewriter { color: var(--gold); border-right: 2px solid var(--gold); padding-right: 5px; animation: blink 0.7s infinite; }
         @keyframes blink { 50% { border-color: transparent; } }
 
-        /* Brand Story Section */
-        .story {
-            padding: 100px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* Философия */
+        .story { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; border-bottom: 1px solid #1a1a1a; }
+        .story h2 { font-family: 'Playfair Display', serif; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; }
+        .story p { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); line-height: 1.6; font-style: italic; }
 
-        .story h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: var(--gold);
-        }
+        /* Коллекция */
+        .collection { padding: 120px 20px; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-family: 'Playfair Display', serif; text-align: center; font-size: 3rem; margin-bottom: 80px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .item { text-align: center; transition: 0.6s ease; border: 1px solid #111; padding: 25px; position: relative; }
+        .img-container { width: 100%; height: 500px; margin-bottom: 30px; overflow: hidden; background: #000; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s ease; opacity: 0.8; }
+        
+        .item:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .item:hover img { transform: scale(1.1); opacity: 1; }
 
-        .story p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--white);
-            font-style: italic;
-            opacity: 0.9;
-        }
+        .btn-view { display: inline-block; margin-top: 20px; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.4s; }
+        .btn-view:hover { background: var(--gold); color: #000; }
 
-        /* Collection Section */
-        .collection {
-            padding: 100px 20px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+        /* Рассылка (Newsletter) */
+        .newsletter { padding: 100px 20px; text-align: center; background: #050505; border-top: 1px solid #111; }
+        .newsletter h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        .newsletter p { color: var(--gray); margin-bottom: 30px; font-size: 0.9rem; }
+        .email-form { display: flex; justify-content: center; max-width: 500px; margin: 0 auto; gap: 10px; }
+        .email-form input { background: transparent; border: 1px solid #333; padding: 15px; color: white; width: 70%; font-family: 'Inter'; outline: none; }
+        .email-form input:focus { border-color: var(--gold); }
+        .email-form button { background: var(--gold); border: none; padding: 0 25px; color: black; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+        .email-form button:hover { opacity: 0.8; }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 90px;
-            letter-spacing: 2px;
-        }
+        footer { padding: 80px 20px; text-align: center; font-size: 0.7rem; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px;
-        }
-
-        .item {
-            text-align: center;
-            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border: 1px solid #111;
-            padding: 20px;
-            background: rgba(255,255,255,0.02);
-        }
-
-        .img-container {
-            width: 100%;
-            height: 480px;
-            margin-bottom: 30px;
-            overflow: hidden;
-            background-color: #111;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s ease, opacity 0.6s ease;
-            opacity: 0.9;
-        }
-
-        .item:hover {
-            transform: translateY(-15px);
-            border-color: var(--gold);
-            box-shadow: 0 10px 40px rgba(197, 160, 89, 0.1);
-        }
-
-        .item:hover img {
-            transform: scale(1.08);
-            opacity: 1;
-        }
-
-        .item h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.7rem;
-            margin-bottom: 12px;
-            font-weight: 400;
-        }
-
-        /* Кнопка View Product */
-        .btn-view {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.4s;
-        }
-
-        .btn-view:hover {
-            background: var(--gold);
-            color: #000;
-        }
-
-        /* Footer */
-        footer {
-            padding: 100px 20px;
-            border-top: 1px solid #1a1a1a;
-            text-align: center;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            color: var(--gray);
-            text-transform: uppercase;
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .main-title { font-size: 3rem; }
-            .section-title { font-size: 2.2rem; }
-            .img-container { height: 400px; }
-            .story p { font-size: 1.1rem; }
+            .email-form { flex-direction: column; }
+            .email-form input, .email-form button { width: 100%; height: 50px; }
         }
     </style>
 </head>
@@ -218,39 +93,42 @@
     </section>
 
     <section class="story">
-        <h2>The Philosophy</h2>
-        <p>In every cup, there is a silent ritual. "Rituals of Taste" was born from a passion for the slow, the handmade, and the meaningful. We believe that tea is not just a drink, but a moment of sensory connection to ancient traditions and modern craft.</p>
+        <h2>Our Philosophy</h2>
+        <p>"Tea is the quiet harmony of the soul. We curate vessels that transform a simple habit into a sacred ritual of taste."</p>
     </section>
 
     <section id="collection" class="collection">
-        <h2 class="section-title">The Collection</h2>
+        <h2 class="section-title">Essential Collection</h2>
         <div class="grid">
             <div class="item">
-                <div class="img-container">
-                    <img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-1.jpg?v=1776201940" alt="Midnight Porcelain">
-                </div>
+                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-1.jpg?v=1776201940" alt="Set 1"></div>
                 <h3>Midnight Porcelain</h3>
                 <a href="#" class="btn-view">View Product</a>
             </div>
             <div class="item">
-                <div class="img-container">
-                    <img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-3.jpg?v=1776201940" alt="Imperial Jade">
-                </div>
+                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-3.jpg?v=1776201940" alt="Set 2"></div>
                 <h3>Imperial Jade</h3>
                 <a href="#" class="btn-view">View Product</a>
             </div>
             <div class="item">
-                <div class="img-container">
-                    <img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-2.jpg?v=1776201940" alt="Zen Glass">
-                </div>
+                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-2.jpg?v=1776201940" alt="Set 3"></div>
                 <h3>Zen Glass</h3>
                 <a href="#" class="btn-view">View Product</a>
             </div>
         </div>
     </section>
 
+    <section class="newsletter">
+        <h3>Join the Ritual</h3>
+        <p>Subscribe to receive stories about tea culture and exclusive previews.</p>
+        <form class="email-form" onsubmit="event.preventDefault(); alert('Thank you for joining!');">
+            <input type="email" placeholder="Your Email Address" required>
+            <button type="submit">Join</button>
+        </form>
+    </section>
+
     <footer>
-        &copy; 2026 Rituals of Taste. All Rights Reserved.
+        &copy; 2026 Rituals of Taste. Developed for the Connoisseur.
     </footer>
 
     <script>
@@ -264,9 +142,7 @@
                 setTimeout(typeWriter, 140);
             }
         }
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(typeWriter, 1200);
-        });
+        document.addEventListener('DOMContentLoaded', () => { setTimeout(typeWriter, 1200); });
     </script>
 </body>
 </html>
