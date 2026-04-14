@@ -32,10 +32,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1571935441005-40332f10f44f?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
         .gold-subtitle {
@@ -116,7 +113,7 @@
             margin-bottom: 25px;
             overflow: hidden;
             border: 1px solid #1a1a1a;
-            transition: border 0.4s;
+            background-color: #111; /* Цвет фона, пока фото грузится */
         }
 
         .item:hover .img-container {
@@ -127,15 +124,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s;
-            opacity: 0.8;
-            filter: grayscale(20%);
+            transition: transform 0.8s, opacity 0.5s;
+            opacity: 0.9;
         }
 
         .item:hover img {
             transform: scale(1.05);
             opacity: 1;
-            filter: grayscale(0%);
         }
 
         .item h3 {
@@ -149,7 +144,6 @@
             color: var(--gray);
             font-size: 0.9rem;
             margin-bottom: 15px;
-            font-weight: 300;
         }
 
         .price {
@@ -223,7 +217,7 @@
         <div class="grid">
             <div class="item">
                 <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1000&auto=format&fit=crop" alt="Midnight Porcelain">
+                    <img src="images/tea-1.jpg" alt="Midnight Porcelain" onerror="this.src='https://via.placeholder.com/450x600/111/c5a059?text=Photo+Not+Found'">
                 </div>
                 <h3>Midnight Porcelain</h3>
                 <p>Matte black finish with 24k gold accents.</p>
@@ -231,7 +225,7 @@
             </div>
             <div class="item">
                 <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1594631252845-29fc4586d5d7?q=80&w=1000&auto=format&fit=crop" alt="Imperial Jade">
+                    <img src="images/tea-2.jpg" alt="Imperial Jade" onerror="this.src='https://via.placeholder.com/450x600/111/c5a059?text=Photo+Not+Found'">
                 </div>
                 <h3>Imperial Jade</h3>
                 <p>Classic celadon glaze from ancient kilns.</p>
@@ -239,7 +233,7 @@
             </div>
             <div class="item">
                 <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1515696955266-4f67e13219e8?q=80&w=1000&auto=format&fit=crop" alt="Zen Glass">
+                    <img src="images/tea-3.jpg" alt="Zen Glass" onerror="this.src='https://via.placeholder.com/450x600/111/c5a059?text=Photo+Not+Found'">
                 </div>
                 <h3>Zen Glass</h3>
                 <p>Heat-resistant glass for visual purity.</p>
@@ -268,8 +262,7 @@
                 setTimeout(typeWriter, 150);
             }
         }
-        // Запуск после небольшой паузы, чтобы пользователь успел увидеть фон
-        window.onload = () => { setTimeout(typeWriter, 1000); };
+        window.onload = () => { setTimeout(typeWriter, 1200); };
     </script>
 </body>
 </html>
