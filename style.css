@@ -1,1 +1,83 @@
+:root {
+    --bg: #0a0a0a;
+    --gold: #c5a059;
+    --white: #ffffff;
+    --gray: #888888;
+}
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Золотой текст */
+.gold-text {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+}
+
+/* Стилизация Header */
+header {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 30px 50px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.nav-links { display: flex; list-style: none; gap: 40px; }
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.btn-primary:hover {
+    background: var(--gold);
+    color: var(--bg);
+}
