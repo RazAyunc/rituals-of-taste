@@ -11,7 +11,7 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* Навигация */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -44,43 +44,88 @@
         @keyframes growLine { to { width: 140px; } }
         #typewriter { color: var(--gold); border-right: 2px solid var(--gold); padding-right: 5px; }
 
-        /* Эффект проявления при скролле */
+        /* Reveal Logic */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Философия */
-        .story { padding: 150px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
-        .story p { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); line-height: 1.6; font-style: italic; }
-
-        /* Parallax Banner */
-        .parallax {
-            height: 60vh;
-            background-image: url('https://images.unsplash.com/photo-1544787210-22bb84457992?q=80&w=2070&auto=format&fit=crop');
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .parallax::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
-        .parallax h2 { position: relative; z-index: 1; font-family: 'Playfair Display', serif; font-size: 2.5rem; letter-spacing: 3px; font-weight: 400; }
-
-        /* Коллекция */
+        /* Collection */
         .collection { padding: 120px 20px; max-width: 1400px; margin: 0 auto; }
-        .section-title { font-family: 'Playfair Display', serif; text-align: center; font-size: 3rem; margin-bottom: 80px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
         .item { text-align: center; transition: 0.6s ease; border: 1px solid #111; padding: 25px; }
         .img-container { width: 100%; height: 500px; margin-bottom: 30px; overflow: hidden; background: #000; }
         .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s ease; opacity: 0.9; }
         .item:hover { border-color: var(--gold); transform: translateY(-10px); }
         .item:hover img { transform: scale(1.05); }
-
         .btn-view { display: inline-block; margin-top: 20px; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.4s; }
         .btn-view:hover { background: var(--gold); color: #000; }
 
-        footer { padding: 100px 20px; text-align: center; border-top: 1px solid #111; color: var(--gray); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
+        /* Footer & Mail */
+        .site-footer {
+            padding: 120px 20px 60px;
+            background: #050505;
+            border-top: 1px solid #111;
+            text-align: center;
+        }
+
+        .footer-content { max-width: 600px; margin: 0 auto; }
+        .footer-content h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 15px; color: var(--white); }
+        .footer-content p { color: var(--gray); font-size: 0.9rem; margin-bottom: 35px; }
+
+        /* Mail Form */
+        .mail-form { display: flex; margin-bottom: 50px; gap: 10px; }
+        .mail-form input { 
+            flex: 1; 
+            background: transparent; 
+            border: 1px solid #222; 
+            padding: 15px 20px; 
+            color: #fff; 
+            font-family: 'Inter'; 
+            outline: none;
+            transition: 0.3s;
+        }
+        .mail-form input:focus { border-color: var(--gold); }
+        .mail-form button { 
+            background: var(--gold); 
+            color: #000; 
+            border: none; 
+            padding: 0 30px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-size: 0.7rem; 
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .mail-form button:hover { opacity: 0.8; }
+
+        /* Social Icons */
+        .socials { display: flex; justify-content: center; gap: 40px; margin-bottom: 50px; }
+        .socials a { 
+            color: var(--white); 
+            text-decoration: none; 
+            font-size: 0.7rem; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            transition: 0.3s;
+            position: relative;
+        }
+        .socials a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 1px;
+            bottom: -5px; left: 0;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+        .socials a:hover { color: var(--gold); }
+        .socials a:hover::after { width: 100%; }
+
+        .copyright { font-size: 0.6rem; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+
+        @media (max-width: 768px) {
+            .mail-form { flex-direction: column; }
+            .mail-form button { padding: 15px; }
+            .socials { gap: 20px; flex-wrap: wrap; }
+        }
     </style>
 </head>
 <body>
@@ -89,7 +134,7 @@
         <a href="#" class="logo">RITUALS OF TASTE</a>
         <div class="nav-links">
             <a href="#collection">Collection</a>
-            <a href="#philosophy">Philosophy</a>
+            <a href="#footer">Contact</a>
         </div>
     </nav>
 
@@ -101,41 +146,47 @@
         </div>
     </section>
 
-    <section id="philosophy" class="story reveal">
-        <p>"In every cup, there is a silent ritual. A conversation between the hand that crafted the vessel and the soul that enjoys the brew."</p>
-    </section>
-
-    <div class="parallax">
-        <h2 class="reveal">Pure Sensory Experience</h2>
-    </div>
-
     <section id="collection" class="collection">
-        <h2 class="section-title reveal">The Collection</h2>
         <div class="grid">
             <div class="item reveal">
-                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-1.jpg?v=1776201940" alt="Set 1"></div>
+                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-1.jpg?v=1776201940" alt="Midnight Porcelain"></div>
                 <h3>Midnight Porcelain</h3>
                 <a href="#" class="btn-view">View Product</a>
             </div>
             <div class="item reveal">
-                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-3.jpg?v=1776201940" alt="Set 2"></div>
+                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-3.jpg?v=1776201940" alt="Imperial Jade"></div>
                 <h3>Imperial Jade</h3>
                 <a href="#" class="btn-view">View Product</a>
             </div>
             <div class="item reveal">
-                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-2.jpg?v=1776201940" alt="Set 3"></div>
+                <div class="img-container"><img src="https://cdn.shopify.com/s/files/1/0754/3232/9387/files/tea-2.jpg?v=1776201940" alt="Zen Glass"></div>
                 <h3>Zen Glass</h3>
                 <a href="#" class="btn-view">View Product</a>
             </div>
         </div>
     </section>
 
-    <footer>
-        &copy; 2026 Rituals of Taste. Aesthetics in every drop.
+    <footer id="footer" class="site-footer reveal">
+        <div class="footer-content">
+            <h3>Join the Circle</h3>
+            <p>Subscribe to receive updates on new drops and tea rituals.</p>
+            
+            <form class="mail-form" onsubmit="event.preventDefault(); alert('Ritual started. Welcome.');">
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Join</button>
+            </form>
+
+            <div class="socials">
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">Facebook</a>
+            </div>
+
+            <p class="copyright">&copy; 2026 Rituals of Taste. All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script>
-        // Печатная машинка
         const text = "Tea Ceremony";
         let i = 0;
         function typeWriter() {
@@ -147,14 +198,12 @@
             }
         }
 
-        // Логика проявления при скролле
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
                 }
             }
@@ -163,7 +212,7 @@
         window.addEventListener("scroll", reveal);
         document.addEventListener('DOMContentLoaded', () => { 
             setTimeout(typeWriter, 1200);
-            reveal(); // Проверка при загрузке
+            reveal();
         });
     </script>
 </body>
