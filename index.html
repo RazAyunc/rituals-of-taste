@@ -21,6 +21,7 @@
             color: var(--white);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Hero Section */
@@ -31,7 +32,10 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1571935441005-40332f10f44f?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
         }
 
         .gold-subtitle {
@@ -108,8 +112,7 @@
 
         .img-container {
             width: 100%;
-            height: 400px;
-            background-color: #111; /* Цвет заглушки пока нет фото */
+            height: 450px;
             margin-bottom: 25px;
             overflow: hidden;
             border: 1px solid #1a1a1a;
@@ -126,11 +129,13 @@
             object-fit: cover;
             transition: transform 0.8s;
             opacity: 0.8;
+            filter: grayscale(20%);
         }
 
         .item:hover img {
             transform: scale(1.05);
             opacity: 1;
+            filter: grayscale(0%);
         }
 
         .item h3 {
@@ -158,6 +163,7 @@
             padding: 80px 20px;
             border-top: 1px solid #1a1a1a;
             text-align: center;
+            background: #050505;
         }
 
         .footer-logo {
@@ -165,6 +171,7 @@
             font-size: 1.8rem;
             margin-bottom: 20px;
             display: block;
+            letter-spacing: 3px;
         }
 
         .social-links {
@@ -216,7 +223,7 @@
         <div class="grid">
             <div class="item">
                 <div class="img-container">
-                    <img src="images/tea-1.jpg" alt="Midnight Porcelain">
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1000&auto=format&fit=crop" alt="Midnight Porcelain">
                 </div>
                 <h3>Midnight Porcelain</h3>
                 <p>Matte black finish with 24k gold accents.</p>
@@ -224,7 +231,7 @@
             </div>
             <div class="item">
                 <div class="img-container">
-                    <img src="images/tea-2.jpg" alt="Imperial Jade">
+                    <img src="https://images.unsplash.com/photo-1594631252845-29fc4586d5d7?q=80&w=1000&auto=format&fit=crop" alt="Imperial Jade">
                 </div>
                 <h3>Imperial Jade</h3>
                 <p>Classic celadon glaze from ancient kilns.</p>
@@ -232,7 +239,7 @@
             </div>
             <div class="item">
                 <div class="img-container">
-                    <img src="images/tea-3.jpg" alt="Zen Glass">
+                    <img src="https://images.unsplash.com/photo-1515696955266-4f67e13219e8?q=80&w=1000&auto=format&fit=crop" alt="Zen Glass">
                 </div>
                 <h3>Zen Glass</h3>
                 <p>Heat-resistant glass for visual purity.</p>
@@ -261,7 +268,8 @@
                 setTimeout(typeWriter, 150);
             }
         }
-        window.onload = () => { setTimeout(typeWriter, 1500); };
+        // Запуск после небольшой паузы, чтобы пользователь успел увидеть фон
+        window.onload = () => { setTimeout(typeWriter, 1000); };
     </script>
 </body>
 </html>
