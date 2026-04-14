@@ -31,10 +31,10 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
         .gold-subtitle {
-            font-family: 'Inter', sans-serif;
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 5px;
@@ -60,16 +60,6 @@
             animation: growLine 1.5s forwards 1s;
         }
 
-        .description {
-            color: var(--gray);
-            font-size: 1rem;
-            letter-spacing: 1px;
-            max-width: 550px;
-            margin: 0 auto 40px;
-            opacity: 0;
-            animation: fadeIn 2s forwards 2s;
-        }
-
         .btn-explore {
             display: inline-block;
             padding: 15px 35px;
@@ -91,7 +81,7 @@
 
         /* Collection Section */
         .collection {
-            padding: 100px 20px;
+            padding: 120px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -100,43 +90,105 @@
             font-family: 'Playfair Display', serif;
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: var(--gold);
+            margin-bottom: 80px;
+            color: var(--white);
+            letter-spacing: 2px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
         }
 
         .item {
-            border: 1px solid #1a1a1a;
-            padding: 40px;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.5s ease;
         }
 
-        .item:hover {
+        .img-container {
+            width: 100%;
+            height: 400px;
+            background-color: #111; /* Цвет заглушки пока нет фото */
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            transition: border 0.4s;
+        }
+
+        .item:hover .img-container {
             border-color: var(--gold);
-            transform: translateY(-10px);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+            opacity: 0.8;
+        }
+
+        .item:hover img {
+            transform: scale(1.05);
+            opacity: 1;
         }
 
         .item h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            font-weight: 400;
         }
 
         .item p {
             color: var(--gray);
             font-size: 0.9rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-weight: 300;
         }
 
         .price {
             color: var(--gold);
-            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 20px;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .social-links {
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            color: #444;
+            font-size: 0.7rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
@@ -155,7 +207,6 @@
             <h2 class="gold-subtitle">Handcrafted Excellence</h2>
             <h1 class="main-title">The Art of <br><span id="typewriter"></span></h1>
             <div class="line"></div>
-            <p class="description">Discover our curated collection of premium tea sets, designed for those who find beauty in the ritual.</p>
             <a href="#collection" class="btn-explore">Explore Collection</a>
         </div>
     </section>
@@ -164,22 +215,41 @@
         <h2 class="section-title">The Collection</h2>
         <div class="grid">
             <div class="item">
+                <div class="img-container">
+                    <img src="images/tea-1.jpg" alt="Midnight Porcelain">
+                </div>
                 <h3>Midnight Porcelain</h3>
-                <p>Deep matte black finish with hand-painted 24k gold rims. Pure elegance.</p>
+                <p>Matte black finish with 24k gold accents.</p>
                 <span class="price">$120.00</span>
             </div>
             <div class="item">
+                <div class="img-container">
+                    <img src="images/tea-2.jpg" alt="Imperial Jade">
+                </div>
                 <h3>Imperial Jade</h3>
-                <p>Traditional celadon glaze inspired by the ancient tea dynasties.</p>
+                <p>Classic celadon glaze from ancient kilns.</p>
                 <span class="price">$95.00</span>
             </div>
             <div class="item">
+                <div class="img-container">
+                    <img src="images/tea-3.jpg" alt="Zen Glass">
+                </div>
                 <h3>Zen Glass</h3>
-                <p>Heat-resistant minimalist glass to appreciate the color of your brew.</p>
+                <p>Heat-resistant glass for visual purity.</p>
                 <span class="price">$75.00</span>
             </div>
         </div>
     </section>
+
+    <footer>
+        <span class="footer-logo">RITUALS OF TASTE</span>
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2026 Rituals of Taste. All Rights Reserved.</p>
+    </footer>
 
     <script>
         const text = "Tea Ceremony";
