@@ -1,30 +1,15 @@
-// Ждем полной загрузки страницы
-window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    
-    // Скрываем прелоадер через 2 секунды
-    setTimeout(() => {
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.style.display = 'none';
-            // Запускаем печатную машинку ПОСЛЕ исчезновения прелоадера
-            startTypewriter();
-        }, 800);
-    }, 2000);
-});
+const text = "Tea Ceremony";
+let i = 0;
 
-// Функция эффекта печатающейся машинки
-function startTypewriter() {
-    const text = "Tea Ceremony";
-    const target = document.getElementById("typewriter");
-    let i = 0;
-
-    function type() {
-        if (i < text.length) {
-            target.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, 150); // Скорость печати
-        }
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 150);
     }
-    type();
 }
+
+// Запуск анимации с небольшой задержкой
+window.onload = () => {
+    setTimeout(typeWriter, 1500);
+};
