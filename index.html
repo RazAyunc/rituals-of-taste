@@ -3,112 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rituals of Taste</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <title>Rituals of Taste | Premium Tea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            background: #0a0a0a;
-            color: #f5f5f5;
-            font-family: 'Playfair Display', serif;
-            text-align: center;
+        :root {
+            --bg: #0a0a0a;
+            --gold: #c5a059;
+            --white: #f5f5f5;
+            --gray: #888;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Анимация появления */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Главный экран */
         .hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 20px;
         }
-        #typewriter {
-            color: #c5a059;
-            min-height: 1.2em;
-            display: inline-block;
+
+        .gold-subtitle {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
         }
-        .gold-line {
-            width: 80px;
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .line {
+            width: 0;
             height: 1px;
-            background: #c5a059;
-            margin: 20px auto;
+            background: var(--gold);
+            margin: 0 auto 30px;
+            animation: growLine 2s forwards 1s;
         }
+
+        @keyframes growLine { to { width: 120px; } }
+
+        #typewriter { 
+            color: var(--gold); 
+            border-right: 2px solid var(--gold);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .btn-explore {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            margin-top: 20px;
+        }
+
+        .btn-explore:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* Секция коллекции */
         .collection {
-            padding: 100px 20px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            padding: 120px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 80px;
+            letter-spacing: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
         .item {
-            border: 1px solid #222;
-            padding: 20px;
+            text-align: center;
+            transition: 0.5s ease;
         }
-        .img-placeholder {
+
+        .img-container {
             width: 100%;
-            height: 350px;
-            background: #111;
-            margin-bottom: 20px;
+            height: 450px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            background-color: #111;
         }
-        .img-placeholder img {
+
+        .img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.8s, opacity 0.5s;
+            opacity: 0.8;
         }
-        .price { color: #c5a059; font-weight: bold; }
-        a.btn {
-            color: #c5a059;
-            text-decoration: none;
-            border: 1px solid #c5a059;
-            padding: 10px 25px;
+
+        .item:hover img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .item:hover { transform: translateY(-10px); }
+
+        .item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: var(--gold);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            padding: 80px 20px;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--gray);
             text-transform: uppercase;
-            font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <p style="color: #c5a059; letter-spacing: 4px;">EST. 2026</p>
-        <h1 style="font-size: 3rem; margin: 10px 0;">The Art of <br><span id="typewriter"></span></h1>
-        <div class="gold-line"></div>
-        <a href="#collection" class="btn">Explore</a>
+        <div class="fade-in">
+            <p class="gold-subtitle">Handcrafted Excellence</p>
+            <h1 class="main-title">The Art of <br><span id="typewriter"></span></h1>
+            <div class="line"></div>
+            <a href="#collection" class="btn-explore">Explore Collection</a>
+        </div>
     </section>
 
     <section id="collection" class="collection">
-        <h2 style="margin-bottom: 50px;">The Collection</h2>
+        <h2 class="section-title">The Collection</h2>
         <div class="grid">
             <div class="item">
-                <div class="img-placeholder"><img src="images/tea-1.jpg" onerror="this.style.display='none'"></div>
+                <div class="img-container">
+                    <img src="images/tea-1.jpg" alt="Item 1" onerror="this.src='https://via.placeholder.com/450x600/111/c5a059?text=Rituals+of+Taste'">
+                </div>
                 <h3>Midnight Porcelain</h3>
-                <p class="price">$120.00</p>
+                <span class="price">$120.00</span>
             </div>
             <div class="item">
-                <div class="img-placeholder"><img src="images/tea-2.jpg" onerror="this.style.display='none'"></div>
+                <div class="img-container">
+                    <img src="images/tea-2.jpg" alt="Item 2" onerror="this.src='https://via.placeholder.com/450x600/111/c5a059?text=Rituals+of+Taste'">
+                </div>
                 <h3>Imperial Jade</h3>
-                <p class="price">$95.00</p>
+                <span class="price">$95.00</span>
             </div>
             <div class="item">
-                <div class="img-placeholder"><img src="images/tea-3.jpg" onerror="this.style.display='none'"></div>
+                <div class="img-container">
+                    <img src="images/tea-3.jpg" alt="Item 3" onerror="this.src='https://via.placeholder.com/450x600/111/c5a059?text=Rituals+of+Taste'">
+                </div>
                 <h3>Zen Glass</h3>
-                <p class="price">$75.00</p>
+                <span class="price">$75.00</span>
             </div>
         </div>
     </section>
 
+    <footer>
+        &copy; 2026 Rituals of Taste. All Rights Reserved.
+    </footer>
+
     <script>
         const text = "Tea Ceremony";
         let i = 0;
-        function type() {
-            if (i < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(i);
+        function typeWriter() {
+            const target = document.getElementById("typewriter");
+            if (target && i < text.length) {
+                target.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(type, 150);
+                setTimeout(typeWriter, 150);
             }
         }
-        // Запуск через 1 секунду после загрузки
-        setTimeout(type, 1000);
+        // Запуск через 1.2 сек, чтобы сначала сработала анимация появления
+        window.onload = () => {
+            setTimeout(typeWriter, 1200);
+        };
     </script>
 </body>
 </html>
